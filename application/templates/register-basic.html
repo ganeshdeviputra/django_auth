@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Jewelify</title>
+
+  <link rel="stylesheet" href="{% static 'assets/plugins/tabler-icons/tabler-icons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+  <main class="auth-page auth-page-register">
+    <!-- <img class="bg-shape bg-shape-top" src="{% static 'assets/img/auth/auth-bg-top.png' %}" alt="">
+    <img class="bg-shape bg-shape-bottom" src="{% static 'assets/img/auth/auth-bg-bot.png' %}" alt=""> -->
+
+    
+    <form class="auth-card" method="post">
+      <header class="auth-header">
+        <h1>Register</h1>
+        <p>Please enter your details to create an account.</p>
+      </header>
+      
+      {% csrf_token %}
+      <label class="field">
+        <span>Full Name</span>
+        <span class="input-box">
+          <i class="ti ti-user"></i>
+          <input type="text" name="username" placeholder="Enter Name">
+        </span>
+      </label>
+
+      <label class="field">
+        <span>Email Address</span>
+        <span class="input-box">
+          <i class="ti ti-mail"></i>
+          <input type="email" name="email" placeholder="Enter Email Address">
+        </span>
+      </label>
+
+      <label class="field">
+        <span>Password</span>
+        <span class="input-box">
+          <i class="ti ti-lock"></i>
+          <input type="password" name="password" placeholder="****************">
+          <i class="ti ti-eye-off"></i>
+        </span>
+      </label>
+
+      <label class="field">
+        <span>Confirm Password</span>
+        <span class="input-box">
+          <i class="ti ti-lock"></i>
+          <input type="password" name="confirm_password" placeholder="****************">
+          <i class="ti ti-eye-off"></i>
+        </span>
+      </label>
+
+      {% if error_message %}
+      
+      <label class="field">
+				<span style="text-align: center; display: block;">
+					<p style="color: #dc3545; margin: 0;">{{ error_message }}</p>
+				</span>
+			</label>
+
+      {% comment %} <div class="divider">
+        <span>
+          <p style="color: #dc3545; margin: 0;">{{ error_message }}</p>
+        </span>
+      </div> {% endcomment %}
+      {% endif %}
+
+
+      <button class="primary-button" type="submit">Register</button>
+
+      <div class="divider"><span>OR</span></div>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+      </p>
+    </form>
+
+    <p class="copyright">Copyright &copy; 2026 - Jewelify.</p>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Jewelify</title>
+
+    <link rel="stylesheet" href="{% static 'assets/plugins/tabler-icons/tabler-icons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+  </head>
+
+  <body>
+    <main class="auth-page auth-page-login">
+      <!--  <div class=" mx-auto mb-4 text-center">
+			<img src="{% static 'assets/img/logo.svg' %}" class="img-fluid" alt="Logo">
+			<div class="auth-logo-txt">✦ JEWELIFY</div>
+		</div>  -->
+
+      <form class="auth-card" action="#" method="post">
+        <header class="auth-header">
+          <h1>Sign In</h1>
+          <p>Please enter your details to access the dashboard.</p>
+        </header>
+
+        {% csrf_token %}
+
+        <label class="field">
+          <span>Email Address</span>
+          <span class="input-box">
+            <i class="ti ti-mail"></i>
+            <input type="email" name="email" placeholder="Enter Email Address" />
+          </span>
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <span class="input-box">
+            <i class="ti ti-lock"></i>
+            <input type="password" name="password" placeholder="****************" />
+            <i class="ti ti-eye-off"></i>
+          </span>
+        </label>
+
+        {% comment %} <label class="field"><span style="text-align: right;"><a style="text-decoration: none; color: #ff0000;" href="{% url 'forgot-password' %}">Forgot Password</a></span></label> {% endcomment %}
+
+        {% if error_message %}
+          <label class="field"><span style="text-align: center; display: block;"><p style="color: #dc3545; margin: 0;">{{ error_message }}</p></span></label>
+
+          {% comment %} <div class="divider">
+            <span><p style="color: #dc3545; margin: 0;">{{ error_message }}</p></span>
+          </div> {% endcomment %}
+        {% endif %}
+
+        <button class="primary-button" type="submit">Login</button>
+
+        <div class="divider">
+          <span>OR</span>
+        </div>
+
+        <p class="auth-switch">
+          Don't have an account yet?
+          <a href="{% url 'register' %}">Register</a>
+        </p>
+      </form>
+
+      <p class="copyright">Copyright &copy; 2026 - Jewelify.</p>
+    </main>
+  </body>
+</html>

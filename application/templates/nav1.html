@@ -1,0 +1,84 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jewelry Navigation & Footer</title>
+  {% comment %} <link href="{% static 'assets/stylesheets/font.css' %}" rel="stylesheet" type="text/css"> {% endcomment %}
+  <link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <header id="top" class="site-header">
+    <div class="container">
+      <div class="top-bar">
+
+        {% if is_logged_in %}
+          <ul class="top-links">
+            <li><a href="{% url 'account' %}">My Account</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        {% else %}
+          <ul class="top-links">
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Create an account</a></li>
+          </ul>
+        {% endif %}
+        
+      </div>
+
+      <div class="line"></div>
+
+      <div class="nav-row">
+        <a id="site-title" href="index.html" class="jnav-logo">✦ JEWELIFY</a>
+
+        <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="about-us.html">About-us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#" class="cart-link">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="cart-text">Cart</span>
+            <span class="number">1</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% block content %}
+  {% endblock content %}
+  
+  {% comment %} <main class="page-content">
+    <section class="hero-panel">
+      <div class="container">
+        <p class="hero-tag">Curated Luxury Jewellery</p>
+        <h1>Timeless pieces for<br>modern elegance.</h1>
+        <p>Crafted with precision, styled with grace, and designed to stand the test of time.</p>
+      </div>
+    </section>
+  </main> {% endcomment %}
+
+  <footer id="footer">
+    <div class="container footer-inner">
+      <p>© 2015 <a href="about-us.html">Jewelry - HTML template</a>. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
